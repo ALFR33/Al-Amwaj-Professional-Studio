@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salh Alheib Klel - Pro Circular Wave & Background Studio</title>
+    <title>Salh Alheib Klel - Perfect Export Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
@@ -20,8 +20,8 @@
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-black font-extrabold text-lg shadow-lg">👑</div>
             <div>
-                <h1 class="text-sm font-bold gold-text">Salh Alheib Klel - Circular Wave Studio</h1>
-                <p class="text-[11px] text-gray-400">Pro Large Circular Waves & Center Cover</p>
+                <h1 class="text-sm font-bold gold-text">Salh Alheib Klel - Master Studio</h1>
+                <p class="text-[11px] text-gray-400">Perfect Background & Circular Waves</p>
             </div>
         </div>
         <div class="flex items-center gap-2 flex-wrap">
@@ -31,22 +31,20 @@
             <input type="file" id="audioFile" accept="audio/*" class="hidden" onchange="loadAudio(event)">
 
             <button onclick="document.getElementById('imageFile').click()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md transition">
-                🖼️ Upload Center Circle Cover
+                🖼️ Center Circle Cover
             </button>
             <input type="file" id="imageFile" accept="image/*" class="hidden" onchange="loadImage(event)">
 
             <button onclick="document.getElementById('bgFile').click()" class="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md transition">
-                🎬 Upload Background (Image/Video)
+                🎬 Background Video/Image
             </button>
             <input type="file" id="bgFile" accept="image/*,video/*" class="hidden" onchange="loadBackground(event)">
             
-            <!-- Colors -->
             <div class="flex items-center gap-1.5 bg-[#111827] px-2 py-1 rounded-xl border border-gray-700">
                 <input type="color" id="colorStart" value="#f59e0b" class="w-5 h-5 rounded cursor-pointer bg-transparent border-0" title="Start Color">
                 <input type="color" id="colorEnd" value="#38bdf8" class="w-5 h-5 rounded cursor-pointer bg-transparent border-0" title="End Color">
             </div>
 
-            <!-- Record Button -->
             <button id="recordBtn" onclick="toggleRecording()" class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5" disabled>
                 <span id="recDot" class="w-2.5 h-2.5 rounded-full bg-white"></span>
                 <span id="recText">Record & Export</span>
@@ -56,7 +54,7 @@
 
     <!-- Main Display Area -->
     <main class="relative flex-1 bg-black flex items-center justify-center overflow-hidden">
-        <video id="bgVideoElement" class="absolute inset-0 w-full h-full object-cover opacity-50 hidden" loop muted playsinline></video>
+        <video id="bgVideoElement" class="absolute inset-0 w-full h-full object-cover hidden" loop muted playsinline></video>
         <canvas id="canvas" class="absolute inset-0 z-10"></canvas>
         
         <!-- Watermark -->
@@ -86,7 +84,7 @@
         </div>
         <div class="flex flex-col items-center sm:items-end gap-1">
             <div id="statusMsg" class="text-xs text-amber-400 font-mono">
-                Upload center circle cover & music to start big circular waves
+                Background video & circular waves ready
             </div>
             <div class="text-[11px] text-gray-400 font-semibold">
                 جميع الحقوق محفوضه للفنان Salh Alheib Klel
@@ -136,7 +134,7 @@
             const imgUrl = URL.createObjectURL(file);
             centerImage = new Image();
             centerImage.src = imgUrl;
-            statusMsg.textContent = "Center circle cover loaded successfully!";
+            statusMsg.textContent = "Center circle cover loaded!";
         }
 
         function loadBackground(event) {
@@ -145,18 +143,15 @@
             const url = URL.createObjectURL(file);
             if (file.type.startsWith('video')) {
                 bgVideoElement.src = url;
-                bgVideoElement.classList.remove('hidden');
-                bgVideoElement.play();
+                bgVideoElement.load();
                 isVideoBg = true;
                 bgImage = null;
-                statusMsg.textContent = "Background video loaded successfully!";
+                statusMsg.textContent = "Background video loaded!";
             } else {
-                bgVideoElement.classList.add('hidden');
-                bgVideoElement.pause();
                 isVideoBg = false;
                 bgImage = new Image();
                 bgImage.src = url;
-                statusMsg.textContent = "Background image loaded successfully!";
+                statusMsg.textContent = "Background image loaded!";
             }
         }
 
@@ -269,21 +264,21 @@
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
-                a.download = 'Salh_Alheib_Klel_Circular_Studio.webm';
+                a.download = 'Salh_Alheib_Klel_Studio.webm';
                 document.body.appendChild(a);
                 a.click();
                 setTimeout(() => {
                     document.body.removeChild(a);
                     window.URL.revokeObjectURL(url);
                 }, 100);
-                statusMsg.textContent = "Circular video exported and downloaded successfully!";
+                statusMsg.textContent = "Video exported with full background!";
             };
 
             mediaRecorder.start();
             isRecording = true;
             recText.textContent = "Stop & Export";
             recDot.classList.add('animate-ping');
-            statusMsg.textContent = "Recording circular video and audio...";
+            statusMsg.textContent = "Recording video with background & waves...";
             
             if (audio.paused) {
                 togglePlay();
@@ -304,15 +299,18 @@
 
             analyser.getByteFrequencyData(dataArray);
 
-            if (bgImage && bgImage.complete) {
+            // رسم الخلفية (سواء كانت فيديو متحرك يتم نسخه مباشرة للكانفاس، أو صورة ثابتة، أو خلفية داكنة)
+            if (isVideoBg && bgVideoElement.readyState >= bgVideoElement.HAVE_CURRENT_DATA) {
+                ctx.drawImage(bgVideoElement, 0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.4)'; // تعتيم خفيف لتبرز الأمواج
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else if (bgImage && bgImage.complete) {
                 ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-            } else if (!isVideoBg) {
+            } else {
                 ctx.fillStyle = '#05070c';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-            } else {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
             }
 
             const colStart = colorStartInput.value;
@@ -322,6 +320,7 @@
             const centerY = canvas.height / 2;
             const circleRadius = 130;
 
+            // رسم الأمواج الدائرية الكبيرة والواضحة
             for (let i = 0; i < dataArray.length; i++) {
                 const barHeight = (dataArray[i] / 255) * 220;
                 const rad = (i * Math.PI * 2) / dataArray.length;
@@ -343,6 +342,7 @@
                 ctx.stroke();
             }
 
+            // رسم الصورة الدائرية في المنتصف
             if (centerImage && centerImage.complete) {
                 ctx.save();
                 ctx.beginPath();
@@ -359,6 +359,7 @@
                 ctx.restore();
             }
 
+            // إطار الدائرة المضيء
             ctx.beginPath();
             ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
             ctx.strokeStyle = colStart;
