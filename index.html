@@ -1,33 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2244311957196913"
-     crossorigin="anonymous"></script>
-<!-- 67غتفغلوةنعو -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2244311957196913"
-     data-ad-slot="3214098413"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2244311957196913"
-     crossorigin="anonymous"></script>
-<!-- 67غتفغلوةنعو -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2244311957196913"
-     data-ad-slot="3214098413"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salh Alheib Klel - 50 Pro Position & Wave Studio</title>
+    <title>Salh Alheib Klel - Pro Circular Wave & Background Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
@@ -42,10 +18,10 @@
     <!-- Top Control Bar -->
     <header class="flex items-center justify-between px-4 py-2 bg-[#0b0f19] border-b border-gray-800 z-20 flex-wrap gap-2">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-black font-extrabold text-lg shadow-lg">🎛️</div>
+            <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-black font-extrabold text-lg shadow-lg">👑</div>
             <div>
-                <h1 class="text-sm font-bold gold-text">Salh Alheib Klel - 50 Wave Studio</h1>
-                <p class="text-[11px] text-gray-400">Pro 50 Visualizer Patterns & Positioning</p>
+                <h1 class="text-sm font-bold gold-text">Salh Alheib Klel - Circular Wave Studio</h1>
+                <p class="text-[11px] text-gray-400">Pro Large Circular Waves & Center Cover</p>
             </div>
         </div>
         <div class="flex items-center gap-2 flex-wrap">
@@ -55,24 +31,15 @@
             <input type="file" id="audioFile" accept="audio/*" class="hidden" onchange="loadAudio(event)">
 
             <button onclick="document.getElementById('imageFile').click()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md transition">
-                🖼️ Upload Cover
+                🖼️ Upload Center Circle Cover
             </button>
             <input type="file" id="imageFile" accept="image/*" class="hidden" onchange="loadImage(event)">
+
+            <button onclick="document.getElementById('bgFile').click()" class="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md transition">
+                🎬 Upload Background (Image/Video)
+            </button>
+            <input type="file" id="bgFile" accept="image/*,video/*" class="hidden" onchange="loadBackground(event)">
             
-            <!-- Wave Position -->
-            <select id="wavePosition" class="bg-[#111827] border border-gray-700 text-xs text-amber-300 rounded-xl px-2 py-1.5 outline-none">
-                <option value="bottom">Waves at Bottom</option>
-                <option value="surround">Surrounding Cover (Circular)</option>
-                <option value="top">Waves at Top</option>
-                <option value="dual">Dual Top & Bottom</option>
-                <option value="middle">Middle Horizon</option>
-            </select>
-
-            <!-- 50 Wave Modes Selector -->
-            <select id="wavePattern" class="bg-[#111827] border border-gray-700 text-xs text-amber-300 rounded-xl px-2 py-1.5 outline-none max-w-[180px]">
-                <!-- Will be populated dynamically with 50 options -->
-            </select>
-
             <!-- Colors -->
             <div class="flex items-center gap-1.5 bg-[#111827] px-2 py-1 rounded-xl border border-gray-700">
                 <input type="color" id="colorStart" value="#f59e0b" class="w-5 h-5 rounded cursor-pointer bg-transparent border-0" title="Start Color">
@@ -89,15 +56,16 @@
 
     <!-- Main Display Area -->
     <main class="relative flex-1 bg-black flex items-center justify-center overflow-hidden">
-        <canvas id="canvas" class="absolute inset-0"></canvas>
+        <video id="bgVideoElement" class="absolute inset-0 w-full h-full object-cover opacity-50 hidden" loop muted playsinline></video>
+        <canvas id="canvas" class="absolute inset-0 z-10"></canvas>
         
         <!-- Watermark -->
-        <div class="absolute bottom-8 right-8 bg-black/70 backdrop-blur-md border border-amber-500/30 px-4 py-2 rounded-xl text-amber-300 font-bold text-xs tracking-wider shadow-2xl pointer-events-none z-10 flex items-center gap-2">
+        <div class="absolute bottom-8 right-8 bg-black/70 backdrop-blur-md border border-amber-500/30 px-4 py-2 rounded-xl text-amber-300 font-bold text-xs tracking-wider shadow-2xl pointer-events-none z-20 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             <span>© Salh Alheib Klel - Master Studio</span>
         </div>
 
-        <div id="trackInfo" class="absolute top-8 left-8 bg-black/70 backdrop-blur-md border border-gray-800 px-4 py-2.5 rounded-xl text-gray-200 text-xs pointer-events-none z-10 hidden">
+        <div id="trackInfo" class="absolute top-8 left-8 bg-black/70 backdrop-blur-md border border-gray-800 px-4 py-2.5 rounded-xl text-gray-200 text-xs pointer-events-none z-20 hidden">
             <p id="fileName" class="font-bold text-amber-400 truncate max-w-xs">Track: Ready</p>
         </div>
     </main>
@@ -118,7 +86,7 @@
         </div>
         <div class="flex flex-col items-center sm:items-end gap-1">
             <div id="statusMsg" class="text-xs text-amber-400 font-mono">
-                Upload image & music, choose from 50 wave patterns
+                Upload center circle cover & music to start big circular waves
             </div>
             <div class="text-[11px] text-gray-400 font-semibold">
                 جميع الحقوق محفوضه للفنان Salh Alheib Klel
@@ -130,6 +98,7 @@
 
     <script>
         const audio = document.getElementById('audioElement');
+        const bgVideoElement = document.getElementById('bgVideoElement');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const playBtn = document.getElementById('playBtn');
@@ -138,8 +107,6 @@
         const durationEl = document.getElementById('duration');
         const trackInfo = document.getElementById('trackInfo');
         const fileNameEl = document.getElementById('fileName');
-        const wavePositionSelect = document.getElementById('wavePosition');
-        const wavePatternSelect = document.getElementById('wavePattern');
         const colorStartInput = document.getElementById('colorStart');
         const colorEndInput = document.getElementById('colorEnd');
         const recordBtn = document.getElementById('recordBtn');
@@ -152,18 +119,9 @@
         let mediaRecorder;
         let recordedChunks = [];
         let isRecording = false;
-        let coverImage = null;
-
-        // Populate 50 Wave Patterns
-        window.addEventListener('DOMContentLoaded', () => {
-            for (let i = 1; i <= 50; i++) {
-                const opt = document.createElement('option');
-                opt.value = i;
-                opt.textContent = `Pattern Style #${i}`;
-                if(i === 1) opt.selected = true;
-                wavePatternSelect.appendChild(opt);
-            }
-        });
+        let centerImage = null;
+        let bgImage = null;
+        let isVideoBg = false;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -176,9 +134,30 @@
             const file = event.target.files[0];
             if (!file) return;
             const imgUrl = URL.createObjectURL(file);
-            coverImage = new Image();
-            coverImage.src = imgUrl;
-            statusMsg.textContent = "Cover image loaded successfully!";
+            centerImage = new Image();
+            centerImage.src = imgUrl;
+            statusMsg.textContent = "Center circle cover loaded successfully!";
+        }
+
+        function loadBackground(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            if (file.type.startsWith('video')) {
+                bgVideoElement.src = url;
+                bgVideoElement.classList.remove('hidden');
+                bgVideoElement.play();
+                isVideoBg = true;
+                bgImage = null;
+                statusMsg.textContent = "Background video loaded successfully!";
+            } else {
+                bgVideoElement.classList.add('hidden');
+                bgVideoElement.pause();
+                isVideoBg = false;
+                bgImage = new Image();
+                bgImage.src = url;
+                statusMsg.textContent = "Background image loaded successfully!";
+            }
         }
 
         function loadAudio(event) {
@@ -230,9 +209,11 @@
             if (audio.paused) {
                 audio.play();
                 playBtn.textContent = '⏸';
+                if (isVideoBg) bgVideoElement.play();
             } else {
                 audio.pause();
                 playBtn.textContent = '▶';
+                if (isVideoBg) bgVideoElement.pause();
             }
         }
 
@@ -245,6 +226,7 @@
 
         function seekAudio(val) {
             audio.currentTime = val;
+            if (isVideoBg) bgVideoElement.currentTime = val;
         }
 
         function formatTime(seconds) {
@@ -287,21 +269,21 @@
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
-                a.download = 'Salh-Alheib-Klel-Video.webm';
+                a.download = 'Salh_Alheib_Klel_Circular_Studio.webm';
                 document.body.appendChild(a);
                 a.click();
                 setTimeout(() => {
                     document.body.removeChild(a);
                     window.URL.revokeObjectURL(url);
                 }, 100);
-                statusMsg.textContent = "Video exported and downloaded successfully!";
+                statusMsg.textContent = "Circular video exported and downloaded successfully!";
             };
 
             mediaRecorder.start();
             isRecording = true;
             recText.textContent = "Stop & Export";
             recDot.classList.add('animate-ping');
-            statusMsg.textContent = "Recording video and audio...";
+            statusMsg.textContent = "Recording circular video and audio...";
             
             if (audio.paused) {
                 togglePlay();
@@ -322,101 +304,66 @@
 
             analyser.getByteFrequencyData(dataArray);
 
-            ctx.fillStyle = '#05070c';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            if (bgImage && bgImage.complete) {
+                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else if (!isVideoBg) {
+                ctx.fillStyle = '#05070c';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
 
-            const position = wavePositionSelect.value;
-            const patternId = parseInt(wavePatternSelect.value);
             const colStart = colorStartInput.value;
             const colEnd = colorEndInput.value;
 
-            // Draw Cover Image
-            let imgSize = 200;
-            let imgX = (canvas.width - imgSize) / 2;
-            let imgY = (canvas.height - imgSize) / 2;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const circleRadius = 130;
 
-            if (coverImage && coverImage.complete) {
+            for (let i = 0; i < dataArray.length; i++) {
+                const barHeight = (dataArray[i] / 255) * 220;
+                const rad = (i * Math.PI * 2) / dataArray.length;
+
+                const xStart = centerX + Math.cos(rad) * (circleRadius + 10);
+                const yStart = centerY + Math.sin(rad) * (circleRadius + 10);
+                const xEnd = centerX + Math.cos(rad) * (circleRadius + 15 + barHeight);
+                const yEnd = centerY + Math.sin(rad) * (circleRadius + 15 + barHeight);
+
+                const gradient = ctx.createLinearGradient(xStart, yStart, xEnd, yEnd);
+                gradient.addColorStop(0, colStart);
+                gradient.addColorStop(1, colEnd);
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(xStart, yStart);
+                ctx.lineTo(xEnd, yEnd);
+                ctx.stroke();
+            }
+
+            if (centerImage && centerImage.complete) {
                 ctx.save();
-                if (position === 'surround') {
-                    ctx.beginPath();
-                    ctx.arc(canvas.width / 2, canvas.height / 2, imgSize / 2, 0, Math.PI * 2);
-                    ctx.clip();
-                    ctx.drawImage(coverImage, imgX, imgY, imgSize, imgSize);
-                    ctx.restore();
-                    
-                    ctx.beginPath();
-                    ctx.arc(canvas.width / 2, canvas.height / 2, imgSize / 2, 0, Math.PI * 2);
-                    ctx.strokeStyle = colStart;
-                    ctx.lineWidth = 4;
-                    ctx.stroke();
-                } else {
-                    ctx.drawImage(coverImage, imgX, imgY - 20, imgSize, imgSize);
-                }
-            }
-
-            // Render based on Pattern ID (Simulating 50 unique variations of math/rendering styles)
-            if (position === 'surround') {
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                let radius = 120 + (patternId % 20);
-
-                for (let i = 0; i < dataArray.length; i++) {
-                    const barHeight = (dataArray[i] / 255) * (80 + (patternId % 50));
-                    const rad = (i * Math.PI * 2) / dataArray.length + (patternId * 0.01);
-
-                    const xStart = centerX + Math.cos(rad) * radius;
-                    const yStart = centerY + Math.sin(rad) * radius;
-                    const xEnd = centerX + Math.cos(rad) * (radius + barHeight);
-                    const yEnd = centerY + Math.sin(rad) * (radius + barHeight);
-
-                    const gradient = ctx.createLinearGradient(xStart, yStart, xEnd, yEnd);
-                    gradient.addColorStop(0, colStart);
-                    gradient.addColorStop(1, colEnd);
-
-                    ctx.strokeStyle = gradient;
-                    ctx.lineWidth = (patternId % 5) + 1;
-                    ctx.beginPath();
-                    ctx.moveTo(xStart, yStart);
-                    ctx.lineTo(xEnd, yEnd);
-                    ctx.stroke();
-                }
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
+                ctx.clip();
+                ctx.drawImage(centerImage, centerX - circleRadius, centerY - circleRadius, circleRadius * 2, circleRadius * 2);
+                ctx.restore();
             } else {
-                // Linear / Bar / Wave patterns for Bottom, Top, Dual, Middle
-                let startY = canvas.height - 100;
-                if (position === 'top') startY = 50;
-                if (position === 'middle') startY = canvas.height / 2;
-
-                const barWidth = (canvas.width / dataArray.length) * (1 + (patternId % 3));
-                let x = 0;
-
-                for (let i = 0; i < dataArray.length; i++) {
-                    const barHeight = (dataArray[i] / 255) * (100 + (patternId * 2));
-
-                    const gradient = ctx.createLinearGradient(0, startY, 0, startY - barHeight);
-                    gradient.addColorStop(0, colStart);
-                    gradient.addColorStop(1, colEnd);
-
-                    ctx.fillStyle = gradient;
-                    
-                    if (patternId % 3 === 0) {
-                        // Rounded style bars
-                        ctx.fillRect(x, startY - barHeight, barWidth - 1, barHeight);
-                    } else if (patternId % 3 === 1) {
-                        // Dot/Square grid style
-                        ctx.fillRect(x, startY - barHeight, barWidth - 2, (barWidth - 2));
-                    } else {
-                        // Classic line peaks
-                        ctx.fillRect(x, startY - barHeight, 2, barHeight);
-                    }
-
-                    if (position === 'dual') {
-                        // Mirror top
-                        ctx.fillRect(x, 0, barWidth - 1, barHeight * 0.5);
-                    }
-
-                    x += barWidth + (patternId % 2);
-                }
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#111827';
+                ctx.fill();
+                ctx.restore();
             }
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = colStart;
+            ctx.lineWidth = 6;
+            ctx.stroke();
         }
     </script>
 </body>
